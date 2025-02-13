@@ -4,8 +4,17 @@
   <button (click)="addFriend()">Add friend</button>
 </div>
 <div class="favorite">
-  <p>My favorite person is: {{ favorite }}</p>
+  <p>My favorite people are:</p>
+  <ul>
+    <li *ngFor="let fav of favorites">{{ fav }}</li>
+  </ul>
 </div>
 <div class="people">
-  <!-- Add your people component here -->
+  <app-people 
+  *ngFor="let friend of people" 
+  [name]="friend" 
+  [isFav]="isInFavs(friend)"
+  (addToFavs)="addToFavs($event)" 
+  (deleteFromFavs)="deleteFromFavs($event)">
+</app-people>
 </div>
